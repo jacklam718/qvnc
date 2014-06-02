@@ -11,6 +11,8 @@ app = QtGui.QApplication(sys.argv)
 
 qt4reactor.install( )
 
+from twisted.internet import reactor
+
 def timeStart( ):
     global start
     start = time.time( )
@@ -178,5 +180,4 @@ def main( ):
     
     reactor.run( )
 if __name__ == "__main__":
-    from twisted.internet import reactor
     main( )
