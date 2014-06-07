@@ -13,14 +13,6 @@ qt4reactor.install( )
 
 from twisted.internet import reactor
 
-def timeStart( ):
-    global start
-    start = time.time( )
-
-def timeStop( ):
-    global start
-    print("%.4f" % (time.time( ) - start))
-
 class RFBtoViewer32(rfb.RFBClient):
     def vncConnectionMade(self):
         print('vncConnectionMade')
@@ -46,7 +38,6 @@ class RFBtoViewer32(rfb.RFBClient):
     def commitUpdate(self, rectangles = None):
         print("commitUpdate")
         """finish series of display updates"""
-        timeStart( )
         self.window.repaint( )
         self.framebufferUpdateRequest(incremental=5)
 
@@ -128,7 +119,6 @@ class QVNCViewer(QtGui.QDialog):
         for image in self._refresh:
             qp.drawImage(image["x"], image["y"], image["image"])
         qp.end( )
-        timeStop( )
 
     def sendMouseEvent(self, e):
         mask = e.button( )
