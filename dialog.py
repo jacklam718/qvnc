@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# --*-- coding: utf-8 --*--
+
 from PyQt4 import QtGui 
 from PyQt4 import QtCore 
 import os
@@ -113,8 +115,3 @@ def connectDialog(parent=None):
         res = (str(res.serverEdit.text().toUtf8()), 
                str(res.speedCombo.currentText().toUtf8()))
         return res
-
-if __name__ == '__main__':
-    app = QtGui.QApplication([])
-    print(connectDialog( ))
-    print(passwdDialog("VNC Server: 127.0.0.1"))
