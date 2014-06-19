@@ -124,6 +124,7 @@ class QVNCViewer(QtGui.QDialog):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
         self.setMouseTracking(True)
+        self._rfb = None
         self._refresh    = [ ]
         self._rectangles = [ ]
 
@@ -145,10 +146,14 @@ class QVNCViewer(QtGui.QDialog):
         qp.end( )
 
     def sendMouseEvent(self, e):
+        if not self._rfb:
+            return
         mask = e.button( )
         self._rfb.pointerEvent(e.pos().x(), e.pos().y(), mask)
 
     def sendKeyEvent(self, e):
+        if not self._rfb:
+            return
         self._rfb.keyEvent(e.nativeVirtualKey(), True)
 
     def updateFramebuffer(self, pixelmap):
