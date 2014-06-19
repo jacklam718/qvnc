@@ -46,12 +46,11 @@ class PasswdDialog(QtGui.QDialog):
 class ConnectDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
-        #self.setFixedSize(350, 200)
         self.resize(350,200)
         self.setWindowTitle("qvnc")
 
-        self.iconImage = QtGui.QImage(os.path.join(app_icon_path, "vnc_connect.png"))
-
+        self.iconImage   = QtGui.QImage(os.path.join(app_icon_path, "vnc_connect.png"))
+        
         self.serverLabel = QtGui.QLabel("VNC Server")
         self.speedLabel  = QtGui.QLabel("Speed")
 
@@ -74,7 +73,6 @@ class ConnectDialog(QtGui.QDialog):
         self.gridLayout.addWidget(self.speedCombo,  2, 2)
 
         self.hboxLayout = QtGui.QHBoxLayout( )
-
         self.hboxLayout.addWidget(self.optionButton)
         self.hboxLayout.addWidget(self.buttonBox)
 
